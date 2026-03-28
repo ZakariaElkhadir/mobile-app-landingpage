@@ -24,8 +24,12 @@
   --color-overlay-dark: rgba(9, 9, 9, 1);
 
   /* Font Sizes */
-  --font-size-h2: 72px;
-  --line-height-h2: 140%;
-  --font-size-paragraph: 24px;
-  --line-height-paragraph: 150%;
+--font-size-h2: clamp(2.5rem, 5vw + 1rem, 4.5rem); 
+  /* 4.5rem = 72px. It will scale down to ~40px on smaller laptops. */
+
+  --font-size-paragraph: clamp(1rem, 1vw + 0.5rem, 1.5rem);
+  /* 1.5rem = 24px. It will scale down to a readable 16px-18px on laptops. */
+
+  --line-height-h2: 1.2;
+  --line-height-paragraph: 1.6;
 }
