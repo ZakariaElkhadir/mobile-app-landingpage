@@ -3,19 +3,19 @@
 @theme {
   /* Primary Colors */
   --color-primary: #000000;
-  --color-brand-blue: #007AFF;
-  --color-button: #208AFF;
-  --color-button-text: #FFFFFF;
-  
+  --color-brand-blue: #007aff;
+  --color-button: #208aff;
+  --color-button-text: #ffffff;
+
   /* Backgrounds & Fills */
-  --color-bg-light: #F5F5F5;
-  --color-bg-white: #FFFFFF;
-  --color-selection-gray: #EBEDF0;
+  --color-bg-light: #f5f5f5;
+  --color-bg-white: #ffffff;
+  --color-selection-gray: #ebedf0;
 
   /* Text & Grays */
   --color-text-unselected: #999999;
-  --color-text-vibrant: #1A1A1A;
-  --color-text-nav-active: #3D3D3D;
+  --color-text-vibrant: #1a1a1a;
+  --color-text-nav-active: #3d3d3d;
   --color-text-nav-inactive: #767676;
   --color-text-muted: #949494;
 
@@ -24,7 +24,7 @@
   --color-overlay-dark: rgba(9, 9, 9, 1);
 
   /* Font Sizes */
---font-size-h2: clamp(2.5rem, 5vw + 1rem, 4.5rem); 
+  --font-size-h2: clamp(2.5rem, 5vw + 1rem, 4.5rem);
   /* 4.5rem = 72px. It will scale down to ~40px on smaller laptops. */
 
   --font-size-paragraph: clamp(1rem, 1vw + 0.5rem, 1.5rem);
@@ -32,4 +32,9 @@
 
   --line-height-h2: 1.2;
   --line-height-paragraph: 1.6;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-bg-white);
+  color: var(--color-text-vibrant);
 }

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -93,7 +92,10 @@ const MetricSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-button py-14 text-button-text md:py-18 lg:py-24">
+    <section
+      ref={sectionRef}
+      className="bg-button py-14 text-button-text md:py-18 lg:py-24"
+    >
       <motion.div
         className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-12 px-6 text-center sm:grid-cols-2 md:px-8 lg:grid-cols-4 lg:px-16 2xl:px-31"
         initial="hidden"
@@ -102,7 +104,11 @@ const MetricSection = () => {
         variants={containerVariants}
       >
         {metrics.map((metric, index) => (
-          <motion.div key={metric.label} className="space-y-3" variants={itemVariants}>
+          <motion.div
+            key={metric.label}
+            className="space-y-3"
+            variants={itemVariants}
+          >
             <p className="text-6xl font-light tracking-tight">
               <span
                 ref={(el) => {
@@ -112,7 +118,9 @@ const MetricSection = () => {
                 0{metric.suffix}
               </span>
             </p>
-            <p className="text-xl font-light text-button-text/90">{metric.label}</p>
+            <p className="text-xl font-light text-button-text/90">
+              {metric.label}
+            </p>
           </motion.div>
         ))}
       </motion.div>

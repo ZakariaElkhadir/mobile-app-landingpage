@@ -11,14 +11,16 @@ const featureCards = [
     imageSrc: "/cards/image-card1.png",
     imageAlt: "Phone lock screen with Snapense balance drop alert",
     title: "Bank Drop Alerts",
-    description: "Balance drops the instant you pay. We're there before you forget.",
+    description:
+      "Balance drops the instant you pay. We're there before you forget.",
     tag: "Never miss a spend",
   },
   {
     imageSrc: "/cards/image-card2.png",
     imageAlt: "Snapense spending categories and merchant list",
     title: "Spending breakdown",
-    description: "Auto-grouped by merchant, category, and recurring spend patterns.",
+    description:
+      "Auto-grouped by merchant, category, and recurring spend patterns.",
     tag: "Auto-built",
   },
   {
@@ -27,6 +29,23 @@ const featureCards = [
     title: "Camera-first capture",
     description: "Locks on any receipt in real time.",
     tag: "Auto-lock",
+  },
+];
+
+const showcaseCards = [
+  {
+    title: "Customisable category system",
+    description:
+      "Build a label architecture that matches how you actually think about money. Auto-assigned, fully editable, learns as you log.",
+    imageSrc: "/cards/apps.png",
+    imageAlt: "Customizable spending labels grid preview",
+  },
+  {
+    title: "Under five seconds",
+    description:
+      "Tap the shutter. Snapense reads the receipt, fills in the details, and saves the expense. Done before you've put your wallet away.",
+    imageSrc: "/cards/right-iphone.png",
+    imageAlt: "Snapense app preview on iPhone frame",
   },
 ];
 
@@ -40,7 +59,6 @@ const Cards = () => {
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>("[data-feature-card]");
-      const media = gsap.utils.toArray<HTMLElement>("[data-card-media]");
 
       gsap.fromTo(
         cards,
@@ -58,24 +76,6 @@ const Cards = () => {
           },
         },
       );
-
-      media.forEach((item) => {
-        gsap.fromTo(
-          item,
-          { yPercent: -6, scale: 1.05 },
-          {
-            yPercent: 6,
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: item,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 0.8,
-            },
-          },
-        );
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -83,8 +83,9 @@ const Cards = () => {
 
   return (
     <section
+      id="features"
       ref={sectionRef}
-      className="bg-bg-light px-4 py-18 md:px-8 md:py-24 lg:px-16 2xl:px-31 2xl:py-28"
+      className="px-4 py-18 md:px-8 md:py-24 lg:px-16 2xl:px-31 2xl:py-28"
     >
       <div className="mx-auto max-w-screen-2xl">
         <motion.div
@@ -105,20 +106,23 @@ const Cards = () => {
           </p>
         </motion.div>
 
-        <div className="mt-10 grid gap-6 md:mt-12 lg:grid-cols-3" data-cards-grid>
-          {featureCards.map((card) => (
+        <div
+          className="mt-10 grid gap-6 md:mt-12 lg:grid-cols-3"
+          data-cards-grid
+        >
+          {featureCards.map((card, index) => (
             <motion.article
               key={card.title}
               data-feature-card
               className="rounded-2xl border border-selection-gray bg-bg-white p-4 md:p-5"
             >
-              <div className="overflow-hidden rounded-xl bg-selection-gray">
+              <div className="overflow-hidden rounded-xl">
                 <Image
                   src={card.imageSrc}
                   alt={card.imageAlt}
                   width={1200}
                   height={900}
-                  className="h-auto w-full object-cover"
+                  className={`h-auto w-full object-cover ${index === 1 ? "scale-[1.05] -translate-x-[3%]" : ""}`}
                   data-card-media
                 />
               </div>
@@ -131,14 +135,39 @@ const Cards = () => {
                 {card.description}
               </p>
 
-              <motion.span
-                className="mt-5 inline-flex rounded-full bg-button px-4 py-2 text-sm text-button-text md:px-5 md:py-2.5 md:text-base"
-              >
+              <motion.span className="mt-5 inline-flex rounded-full bg-button px-4 py-2 text-sm text-button-text md:px-5 md:py-2.5 md:text-base">
                 {card.tag}
               </motion.span>
             </motion.article>
           ))}
         </div>
+      </div>
+      <div className="mx-auto mt-6 grid max-w-screen-2xl gap-6 lg:grid-cols-2">
+        {showcaseCards.map((card) => (
+          <motion.article
+            key={card.title}
+            data-feature-card
+            className="rounded-2xl border border-selection-gray bg-bg-white p-4 md:p-5"
+          >
+            <h3 className="text-[24px] leading-normal font-medium text-[#606060]">
+              {card.title}
+            </h3>
+            <p className="mt-3 text-base leading-normal font-normal text-[#606060]">
+              {card.description}
+            </p>
+
+            <div className="mt-5    ">
+              <Image
+                src={card.imageSrc}
+                alt={card.imageAlt}
+                width={1600}
+                height={1000}
+                className="h-auto w-full object-contain"
+                data-card-media
+              />
+            </div>
+          </motion.article>
+        ))}
       </div>
     </section>
   );
