@@ -66,31 +66,31 @@ export default function Reviews() {
             quote="I've tried every expense app. Snapense is the only one I've used past the first week — by a long way."
             name="Marcus L."
             role="Software Engineer, SF"
-            avatarSrc="/marcus.png"
+            avatarSrc="/Reviews/marcus.png"
           />
         </div>
         <div className="w-full">
           <ReviewCard
-            quote="I've tried every expense app. Snapense is the only one I've used past the first week — by a long way."
-            name="Marcus L."
-            role="Software Engineer, SF"
-            avatarSrc="/marcus.png"
+            quote="Finally, an app that doesn't make expense tracking feel like a chore. "
+            name="Artem K."
+            role="Product Designer, NY"
+            avatarSrc="/Reviews/artem-kryzhaniv.jpg"
           />
         </div>
         <div className="w-full">
           <ReviewCard
-            quote="I've tried every expense app. Snapense is the only one I've used past the first week — by a long way."
-            name="Marcus L."
-            role="Software Engineer, SF"
-            avatarSrc="/marcus.png"
+            quote="I use it every single day. The insights I get from my spending habits have literally changed how I manage my finances."
+            name="Daniel B."
+            role="Freelancer, Austin"
+            avatarSrc="/Reviews/daniel-bernard.jpg"
           />
         </div>
         <div className="w-full">
           <ReviewCard
-            quote="I've tried every expense app. Snapense is the only one I've used past the first week — by a long way."
-            name="Marcus L."
-            role="Software Engineer, SF"
-            avatarSrc="/marcus.png"
+            quote="Lightning fast, beautiful design, and perfectly syncs across all my devices. It's the standard all productivity apps should aim for."
+            name="Roman H."
+            role="Startup Founder, London"
+            avatarSrc="/Reviews/roman-holos.jpg"
           />
         </div>
       </div>
