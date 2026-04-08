@@ -187,12 +187,11 @@ const Steps = () => {
                 key={panel.id}
                 data-step-panel
                 data-step-index={panelIndex}
-                className={`grid gap-4 lg:grid-cols-2 lg:items-stretch ${
+                className={`grid gap-12 lg:gap-4 lg:grid-cols-2 lg:items-stretch ${
                   isVisible
                     ? "relative z-10"
-                    : "pointer-events-none absolute inset-0 opacity-0"
+                    : "relative z-0 mt-16 lg:mt-0 lg:pointer-events-none lg:absolute lg:inset-0 lg:opacity-0"
                 }`}
-                aria-hidden={!isVisible}
               >
                 <div className="space-y-3 md:space-y-4">
                   {steps.map((step) => {

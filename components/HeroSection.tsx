@@ -59,12 +59,12 @@ const HeroSection = () => {
       </motion.p>
       <motion.div
         variants={itemVariants}
-        className="inline-flex items-center justify-center gap-4 p-1 mt-4"
+        className="flex flex-col sm:flex-row items-center justify-center gap-4 p-1 mt-6 w-full max-w-[400px] sm:max-w-none mx-auto"
       >
-        <button className="rounded-[100px] bg-button px-8 py-3 text-button-text hover:bg-button/90 transition-colors">
+        <button className="w-full sm:w-auto rounded-[100px] bg-button px-8 py-3 text-[15px] font-medium text-button-text hover:bg-button/90 transition-colors">
           Download
         </button>
-        <button className="rounded-[100px] border border-button bg-transparent px-8 py-3 text-button hover:bg-button/5 transition-colors">
+        <button className="w-full sm:w-auto rounded-[100px] border border-button bg-transparent px-8 py-3 text-[15px] font-medium text-button hover:bg-button/5 transition-colors">
           Features
         </button>
       </motion.div>

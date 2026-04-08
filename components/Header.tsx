@@ -31,6 +31,7 @@ const itemVariants = {
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,7 +88,7 @@ const Header = () => {
           />
         </motion.div>
         <motion.ul
-          className="flex flex-1 items-center justify-center gap-8 text-sm"
+          className="hidden lg:flex flex-1 items-center justify-center gap-8 text-sm"
           variants={containerVariants}
         >
           {navItems.map((item) => {
@@ -124,14 +125,59 @@ const Header = () => {
         </motion.ul>
       </nav>
 
-      <motion.button
-        className="rounded-[43px] bg-button px-5 py-2.5 text-sm text-button-text"
-        variants={itemVariants}
-        whileHover={{ y: -2, scale: 1.02 }}
-        whileTap={{ scale: 0.97 }}
-      >
-        Get the app
-      </motion.button>
+      <div className="flex items-center gap-4">
+        <motion.button
+          className="hidden sm:block rounded-[43px] bg-button px-5 py-2.5 text-sm text-button-text"
+          variants={itemVariants}
+          whileHover={{ y: -2, scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          Get the app
+        </motion.button>
+        <button 
+          className="lg:hidden p-2 text-text-vibrant"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isMobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 right-0 bg-bg-white border-b border-selection-gray lg:hidden overflow-hidden shadow-sm"
+          >
+            <ul className="flex flex-col px-8 py-4 gap-4">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="block text-text-nav-inactive hover:text-text-vibrant text-base py-2 font-medium"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+              <li className="pt-2 pb-2 sm:hidden">
+                <button className="w-full rounded-[43px] bg-button px-5 py-3 text-sm text-button-text font-medium text-center">
+                  Get the app
+                </button>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };
