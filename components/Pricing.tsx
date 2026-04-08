@@ -36,7 +36,7 @@ const Pricing = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 mb-6">
+        <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">
           Simple.
           <br />
           No surprises.

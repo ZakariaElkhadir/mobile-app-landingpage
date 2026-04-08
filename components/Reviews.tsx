@@ -50,7 +50,7 @@ export default function Reviews() {
     >
       <h2
         ref={headingRef}
-        className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 mb-16 text-center"
+        className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 dark:text-white mb-16 text-center"
       >
         People who
         <br />

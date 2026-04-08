@@ -29,6 +29,8 @@ const itemVariants = {
   show: { opacity: 1, y: 0 },
 };
 
+import { ThemeToggle } from "./ThemeToggle";
+
 const Header = () => {
   const [activeSection, setActiveSection] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -72,7 +74,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className="2xl:px-31 flex items-center justify-between bg-bg-white px-8 py-3 lg:px-16 sticky top-0 z-50"
+      className="2xl:px-31 flex items-center justify-between bg-bg-white px-8 py-3 lg:px-16 sticky top-0 z-50 transition-colors"
       initial="hidden"
       animate="show"
       variants={containerVariants}
@@ -126,6 +128,7 @@ const Header = () => {
       </nav>
 
       <div className="flex items-center gap-4">
+        <ThemeToggle />
         <motion.button
           className="hidden sm:block rounded-[43px] bg-button px-5 py-2.5 text-sm text-button-text"
           variants={itemVariants}

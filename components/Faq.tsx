@@ -50,7 +50,7 @@ export default function Faq() {
       className="py-32 px-6 max-w-[1200px] mx-auto flex flex-col items-center font-sans overflow-hidden"
     >
       <div ref={headerRef} className="text-center mb-16 px-4">
-        <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 mb-6 leading-tight">
+        <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
           Questions
           <br />
           we get a lot.

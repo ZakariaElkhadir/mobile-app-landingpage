@@ -14,9 +14,10 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="w-9 h-9" />;
+    return <div className="w-9 h-9" />; // Placeholder to avoid layout shift
   }
 
+  // Determine current theme even if it's set to 'system'
   const currentTheme = theme === "system" ? systemTheme : theme;
   const isDark = currentTheme === "dark";
 
@@ -30,10 +31,11 @@ export function ThemeToggle() {
 
     const x = e.clientX;
     const y = e.clientY;
-
+    
+    // Calculate the distance to the farthest corner
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y),
+      Math.max(y, window.innerHeight - y)
     );
 
     const transition = document.startViewTransition(() => {
@@ -54,7 +56,7 @@ export function ThemeToggle() {
           duration: 700,
           easing: "ease-in-out",
           pseudoElement: "::view-transition-new(root)",
-        },
+        }
       );
     });
   };
