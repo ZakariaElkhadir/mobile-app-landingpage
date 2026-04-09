@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: var(--font-inter-tight);
+  
   /* Primary Colors */
   --color-primary: #000000;
   --color-brand-blue: #007aff;
@@ -34,7 +36,7 @@
   --line-height-paragraph: 1.6;
 }
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-inter-tight), sans-serif;
   background-color: var(--color-bg-white);
   color: var(--color-text-vibrant);
 }
