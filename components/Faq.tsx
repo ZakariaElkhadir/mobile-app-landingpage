@@ -55,7 +55,7 @@ export default function Faq() {
           <br />
           we get a lot.
         </h2>
-        <p className="text-[#767676] text-lg sm:text-xl font-light">
+        <p className="text-text-muted text-lg sm:text-xl font-light">
           Still not sure? Everything you need to know
           <br className="hidden sm:block" /> before downloading.
         </p>

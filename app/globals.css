@@ -96,3 +96,11 @@ body {
 ::view-transition-new(root) {
   z-index: 9999;
 }
+
+.backwards-theme-transition::view-transition-old(root) {
+  z-index: 9999;
+}
+
+.backwards-theme-transition::view-transition-new(root) {
+  z-index: 1;
+}
