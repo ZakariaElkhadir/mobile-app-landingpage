@@ -125,7 +125,7 @@ const Cards = () => {
               data-feature-card
               className="rounded-2xl border border-selection-gray bg-bg-white p-4 md:p-5"
             >
-              <div className="overflow-hidden rounded-xl bg-selection-gray transition-colors duration-300">
+              <div className="overflow-hidden rounded-xl">
                 <Image
                   src={mounted && resolvedTheme === "dark" && (card as any).darkImageSrc ? (card as any).darkImageSrc : card.imageSrc}
                   alt={card.imageAlt}
