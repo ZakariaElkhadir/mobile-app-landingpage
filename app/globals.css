@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter-tight);
+  --font-sans: var(--font-inter-display);
   
   /* Primary Colors */
   --color-primary: #000000;
@@ -34,7 +34,7 @@
 }
 
 body {
-  font-family: var(--font-inter-tight), sans-serif;
+  font-family: var(--font-inter-display), sans-serif;
   background-color: var(--color-bg-white);
   color: var(--color-text-vibrant);
 }
