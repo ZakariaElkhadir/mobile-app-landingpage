@@ -56,92 +56,110 @@ const Steps = () => {
 
     const mm = gsap.matchMedia();
 
-    mm.add("(min-width: 1024px)", () => {
-      if (!trackRef.current) return;
+    mm.add(
+      {
+        isMobile: "(max-width: 767px)",
+        isTablet: "(min-width: 768px) and (max-width: 1023px)",
+        isDesktop: "(min-width: 1024px)",
+      },
+      (context) => {
+        const { isMobile, isTablet } = context.conditions as {
+          isMobile?: boolean;
+          isTablet?: boolean;
+          isDesktop?: boolean;
+        };
 
-      const panels = gsap.utils.toArray<HTMLElement>(
-        trackRef.current.querySelectorAll("[data-step-panel]"),
-      );
+        if (!trackRef.current) return;
 
-      if (panels.length < 2) return;
+        const panels = gsap.utils.toArray<HTMLElement>(
+          trackRef.current.querySelectorAll("[data-step-panel]"),
+        );
 
-      panels.forEach((panel, i) => {
-        const img = panel.querySelector("img");
-        const activeBox = panel.querySelector(".bg-button");
+        if (panels.length < 2) return;
 
-        if (i !== 0) {
-          gsap.set(panel, { autoAlpha: 0, zIndex: 1, pointerEvents: "none" });
-          if (img) gsap.set(img, { y: 60, scale: 1.1 });
-          if (activeBox) gsap.set(activeBox, { x: 20, autoAlpha: 0 });
-        } else {
-          gsap.set(panel, { autoAlpha: 1, zIndex: 10, pointerEvents: "auto" });
-          if (img) gsap.set(img, { y: 0, scale: 1 });
-          if (activeBox) gsap.set(activeBox, { x: 0, autoAlpha: 1 });
-        }
-      });
+        const yOffset = isMobile ? 30 : isTablet ? 45 : 60;
+        const xOffset = isMobile ? 10 : 20;
+        const scrollDistance = isMobile ? 450 : isTablet ? 600 : 800;
+        const startOffset = isMobile ? "top 12%" : "top 18%";
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: trackRef.current,
-          start: "top 18%",
-          end: `+=${panels.length * 800}`,
-          scrub: 1.2,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
+        panels.forEach((panel, i) => {
+          const img = panel.querySelector("img");
+          const activeBox = panel.querySelector(".bg-button");
 
-      for (let index = 1; index < panels.length; index += 1) {
-        const prevPanel = panels[index - 1];
-        const nextPanel = panels[index];
-        const prevImg = prevPanel.querySelector("img");
-        const nextImg = nextPanel.querySelector("img");
-        const nextBox = nextPanel.querySelector(".bg-button");
+          if (i !== 0) {
+            gsap.set(panel, { autoAlpha: 0, zIndex: 1, pointerEvents: "none" });
+            if (img) gsap.set(img, { y: yOffset, scale: isMobile ? 1.05 : 1.1 });
+            if (activeBox) gsap.set(activeBox, { x: xOffset, autoAlpha: 0 });
+          } else {
+            gsap.set(panel, { autoAlpha: 1, zIndex: 10, pointerEvents: "auto" });
+            if (img) gsap.set(img, { y: 0, scale: 1 });
+            if (activeBox) gsap.set(activeBox, { x: 0, autoAlpha: 1 });
+          }
+        });
 
-        tl.to(
-          prevPanel,
-          {
-            autoAlpha: 0,
-            zIndex: 1,
-            pointerEvents: "none",
-            duration: 0.8,
-            ease: "power2.inOut",
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: trackRef.current,
+            start: startOffset,
+            end: `+=${panels.length * scrollDistance}`,
+            scrub: 1.2,
+            pin: true,
+            anticipatePin: 1,
           },
-          index,
-        )
-          .to(
-            prevImg,
-            { y: -60, scale: 1.05, duration: 0.8, ease: "power2.inOut" },
-            index,
-          )
-          .to(
-            nextPanel,
+        });
+
+        for (let index = 1; index < panels.length; index += 1) {
+          const prevPanel = panels[index - 1];
+          const nextPanel = panels[index];
+          const prevImg = prevPanel.querySelector("img");
+          const nextImg = nextPanel.querySelector("img");
+          const nextBox = nextPanel.querySelector(".bg-button");
+
+          tl.to(
+            prevPanel,
             {
-              autoAlpha: 1,
-              zIndex: 10,
-              pointerEvents: "auto",
+              autoAlpha: 0,
+              zIndex: 1,
+              pointerEvents: "none",
               duration: 0.8,
               ease: "power2.inOut",
             },
             index,
           )
-          .to(
-            nextImg,
-            { y: 0, scale: 1, duration: 0.8, ease: "power2.out" },
-            index,
-          )
-          .to(
-            nextBox,
-            { x: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out" },
-            index,
-          );
-      }
+            .to(
+              prevImg,
+              { y: -yOffset, scale: isMobile ? 1.02 : 1.05, duration: 0.8, ease: "power2.inOut" },
+              index,
+            )
+            .to(
+              nextPanel,
+              {
+                autoAlpha: 1,
+                zIndex: 10,
+                pointerEvents: "auto",
+                duration: 0.8,
+                ease: "power2.inOut",
+              },
+              index,
+            )
+            .to(
+              nextImg,
+              { y: 0, scale: 1, duration: 0.8, ease: "power2.out" },
+              index,
+            )
+            .to(
+              nextBox,
+              { x: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out" },
+              index,
+            );
+        }
 
-      return () => {
-        tl.scrollTrigger?.kill();
-        tl.kill();
-      };
-    });
+        return () => {
+          tl.scrollTrigger?.kill();
+          tl.kill();
+        };
+      }
+    );
 
     return () => mm.revert();
   }, []);
@@ -190,7 +208,7 @@ const Steps = () => {
                 className={`grid gap-12 lg:gap-4 lg:grid-cols-2 lg:items-stretch ${
                   isVisible
                     ? "relative z-10"
-                    : "relative z-0 mt-16 lg:mt-0 lg:pointer-events-none lg:absolute lg:inset-0 lg:opacity-0"
+                    : "pointer-events-none absolute inset-0 z-0 opacity-0"
                 }`}
               >
                 <div className="space-y-3 md:space-y-4">
