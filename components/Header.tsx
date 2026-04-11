@@ -74,7 +74,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className="2xl:px-31 flex items-center justify-between bg-bg-white px-8 py-3 lg:px-16 sticky top-0 z-50 transition-colors"
+      className="2xl:px-31 flex items-center justify-between bg-bg-white px-8 py-3 lg:px-16 fixed top-0 w-full z-50 transition-colors"
       initial="hidden"
       animate="show"
       variants={containerVariants}
