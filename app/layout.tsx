@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Inter_Tight, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const interDisplay = Inter({
+const interTight = Inter_Tight({
   variable: "--font-inter-display",
   subsets: ["latin"],
   display: "swap",
@@ -29,9 +29,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${interDisplay.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${interTight.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className={`${interDisplay.className} min-h-full flex flex-col`}>
+      <body className={`${interTight.className} min-h-full flex flex-col`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
