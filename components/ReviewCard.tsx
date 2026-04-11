@@ -14,8 +14,7 @@ const StarIcon = ({ filled = true, half = false }) => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill="#E5E7EB"
-        className="w-full h-full absolute"
+        className="w-full h-full absolute text-selection-gray fill-current"
       >
         <path
           fillRule="evenodd"
@@ -29,8 +28,7 @@ const StarIcon = ({ filled = true, half = false }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          fill="#208AFF"
-          className="w-full h-full absolute"
+          className="w-full h-full absolute text-brand-blue fill-current"
           style={half ? { clipPath: "inset(0 50% 0 0)" } : undefined}
         >
           <path
@@ -51,7 +49,7 @@ export default function ReviewCard({
   avatarSrc,
 }: ReviewCardProps) {
   return (
-    <div className="flex flex-col p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="flex flex-col p-8 rounded-2xl border border-selection-gray bg-bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex items-center gap-1 mb-6">
         <StarIcon filled />
         <StarIcon filled />
@@ -60,7 +58,7 @@ export default function ReviewCard({
         <StarIcon filled={false} half={true} />
       </div>
 
-      <p className="text-[#767676] text-lg leading-relaxed mb-8 grow">
+      <p className="text-text-nav-inactive text-lg leading-relaxed mb-8 grow">
         "{quote}"
       </p>
 
@@ -69,8 +67,9 @@ export default function ReviewCard({
           <Image src={avatarSrc} alt={name} fill className="object-cover" />
         </div>
         <div className="flex flex-col">
-          <span className="font-medium text-gray-900 text-sm">{name}</span>
-          <span className="text-[#949494] text-sm">{role}</span>
+          <span className="font-medium text-text-vibrant text-sm">{name}</span>
+          <span className="text-text-muted text-sm">{role}</span>
+
         </div>
       </div>
     </div>

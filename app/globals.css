@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter-tight);
+  --font-sans: var(--font-inter-display);
   
   /* Primary Colors */
   --color-primary: #000000;
@@ -27,16 +27,80 @@
 
   /* Font Sizes */
   --font-size-h2: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  /* 4.5rem = 72px. It will scale down to ~40px on smaller laptops. */
-
   --font-size-paragraph: clamp(1rem, 1vw + 0.5rem, 1.5rem);
-  /* 1.5rem = 24px. It will scale down to a readable 16px-18px on laptops. */
 
   --line-height-h2: 1.2;
   --line-height-paragraph: 1.6;
 }
+
 body {
-  font-family: var(--font-inter-tight), sans-serif;
+  font-family: var(--font-inter-display), sans-serif;
   background-color: var(--color-bg-white);
   color: var(--color-text-vibrant);
+}
+
+
+/* ─────────────────────────────────────────
+   Dark mode overrides
+   Uses @media so it works automatically
+   with Tailwind's `darkMode: 'media'`.
+
+   If you're using class-based dark mode
+   (darkMode: 'class' in tailwind.config),
+   swap @media (prefers-color-scheme: dark)
+   with .dark — see comment below.
+───────────────────────────────────────── */
+:root.dark {
+  /* Backgrounds — 3-layer depth system */
+  --color-bg-white: #0a0a0a;        /* was #ffffff — main page bg */
+  --color-bg-light: #111111;        /* was #f5f5f5 — section alternation */
+  --color-selection-gray: #1a1a1a;  /* was #ebedf0 — cards, chips, inputs */
+
+  /* Primary & text */
+  --color-primary: #f0f0f0;         /* was #000000 — inverted */
+  --color-text-vibrant: #efefef;    /* was #1a1a1a — headings, strong text */
+  --color-text-nav-active: #c8c8c8; /* was #3d3d3d — active nav links */
+  --color-text-nav-inactive: #666666; /* was #767676 — stays similar, slightly dimmer */
+  --color-text-unselected: #555555; /* was #999999 */
+  --color-text-muted: #555555;      /* was #949494 */
+
+  /* Blue — bumped slightly brighter for dark bg contrast */
+  --color-brand-blue: #208aff;      /* was #007aff */
+  --color-button: #208aff;          /* unchanged — already the brighter variant */
+  --color-button-text: #ffffff;     /* unchanged */
+
+  /* Tint — slightly reduced opacity on dark */
+  --color-button-tint: rgba(0, 122, 255, 0.12); /* was 0.15 */
+
+  /* Overlay */
+  --color-overlay-dark: rgba(0, 0, 0, 0.85);
+}
+
+/* ─────────────────────────────────────────
+   View Transitions API 
+   (Used for the theme wave/ripple animation)
+───────────────────────────────────────── */
+::view-transition-group(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.backwards-theme-transition::view-transition-old(root) {
+  z-index: 9999;
+}
+
+.backwards-theme-transition::view-transition-new(root) {
+  z-index: 1;
 }

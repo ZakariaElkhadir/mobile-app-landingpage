@@ -36,12 +36,12 @@ const Pricing = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 mb-6">
+        <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-text-vibrant mb-6">
           Simple.
           <br />
           No surprises.
         </h2>
-        <p className="text-[#767676] max-w-xl mx-auto text-base md:text-lg">
+        <p className="text-text-muted max-w-xl mx-auto text-base md:text-lg">
           Start free. Upgrade when you're ready. No trial cliffs, no feature
           paywalls on the basics. Cancel any time from settings.
         </p>
@@ -57,21 +57,21 @@ const Pricing = () => {
         {/* Free Plan */}
         <motion.div
           variants={itemVariants}
-          className="border border-gray-200 rounded-2xl p-8 flex flex-col bg-white"
+          className="border border-selection-gray rounded-2xl p-8 flex flex-col bg-bg-white"
         >
           <div className="mb-6">
-            <span className="inline-block bg-[#007AFF] text-white text-[11px] font-medium px-3 py-1 rounded-full">
+            <span className="inline-block bg-brand-blue text-white text-[11px] font-medium px-3 py-1 rounded-full">
               Free
             </span>
           </div>
           <div className="mb-6">
-            <h3 className="text-[#767676] text-sm mb-1">To get started</h3>
-            <div className="text-[32px] font-normal text-gray-900 leading-none">
-              0$ <span className="text-lg text-[#767676]">forever</span>
+            <h3 className="text-text-nav-inactive text-sm mb-1">To get started</h3>
+            <div className="text-[32px] font-normal text-text-vibrant leading-none">
+              0$ <span className="text-lg text-text-nav-inactive">forever</span>
             </div>
           </div>
 
-          <div className="w-full h-[1px] bg-gray-200 mb-6" />
+          <div className="w-full h-[1px] bg-selection-gray mb-6" />
 
           <ul className="space-y-4 mb-10 flex-grow">
             {[
@@ -82,15 +82,15 @@ const Pricing = () => {
             ].map((feature, i) => (
               <li
                 key={i}
-                className="flex items-center text-[#767676] text-[15px]"
+                className="flex items-center text-text-nav-inactive text-[15px]"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#767676] mr-4 shrink-0"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-text-nav-inactive mr-4 shrink-0"></div>
                 {feature}
               </li>
             ))}
           </ul>
 
-          <button className="w-full mt-auto border border-[#007AFF] text-[#007AFF] rounded-full py-3 text-sm font-medium hover:bg-[#007AFF]/5 transition-colors">
+          <button className="w-full mt-auto border border-brand-blue text-brand-blue rounded-full py-3 text-sm font-medium hover:bg-brand-blue/5 transition-colors">
             Start for free
           </button>
         </motion.div>
@@ -138,26 +138,26 @@ const Pricing = () => {
         {/* Annual Plan */}
         <motion.div
           variants={itemVariants}
-          className="border border-gray-200 rounded-2xl p-8 flex flex-col bg-white"
+          className="border border-selection-gray rounded-2xl p-8 flex flex-col bg-bg-white"
         >
           <div className="mb-6">
-            <span className="inline-block bg-[#007AFF] text-white text-[11px] font-medium px-3 py-1 rounded-full">
+            <span className="inline-block bg-brand-blue text-white text-[11px] font-medium px-3 py-1 rounded-full">
               Annual – Save 33%
             </span>
           </div>
           <div className="mb-6">
-            <h3 className="text-[#767676] text-sm mb-1">
+            <h3 className="text-text-nav-inactive text-sm mb-1">
               For committed savers
             </h3>
-            <div className="text-[32px] font-normal text-gray-900 leading-none flex items-baseline gap-1">
+            <div className="text-[32px] font-normal text-text-vibrant leading-none flex items-baseline gap-1">
               4${" "}
-              <span className="text-lg text-[#767676]">
+              <span className="text-lg text-text-nav-inactive">
                 per month - billed $48/yr
               </span>
             </div>
           </div>
 
-          <div className="w-full h-[1px] bg-gray-200 mb-6" />
+          <div className="w-full h-[1px] bg-selection-gray mb-6" />
 
           <ul className="space-y-4 mb-10 flex-grow">
             {[
@@ -168,15 +168,15 @@ const Pricing = () => {
             ].map((feature, i) => (
               <li
                 key={i}
-                className="flex items-center text-[#767676] text-[15px]"
+                className="flex items-center text-text-nav-inactive text-[15px]"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#767676] mr-4 shrink-0"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-text-nav-inactive mr-4 shrink-0"></div>
                 {feature}
               </li>
             ))}
           </ul>
 
-          <button className="w-full mt-auto border border-[#007AFF] text-[#007AFF] rounded-full py-3 text-sm font-medium hover:bg-[#007AFF]/5 transition-colors">
+          <button className="w-full mt-auto border border-brand-blue text-brand-blue rounded-full py-3 text-sm font-medium hover:bg-brand-blue/5 transition-colors">
             Get Annual
           </button>
         </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +10,7 @@ import Image from "next/image";
 const featureCards = [
   {
     imageSrc: "/cards/image-card1.png",
+    darkImageSrc: "/cards/image-card1-dark.png",
     imageAlt: "Phone lock screen with Snapense balance drop alert",
     title: "Bank Drop Alerts",
     description:
@@ -17,6 +19,7 @@ const featureCards = [
   },
   {
     imageSrc: "/cards/image-card2.png",
+    darkImageSrc: "/cards/image-card2-dark.png",
     imageAlt: "Snapense spending categories and merchant list",
     title: "Spending breakdown",
     description:
@@ -38,6 +41,7 @@ const showcaseCards = [
     description:
       "Build a label architecture that matches how you actually think about money. Auto-assigned, fully editable, learns as you log.",
     imageSrc: "/cards/apps.png",
+    darkImageSrc: "/cards/apps-dark.png",
     imageAlt: "Customizable spending labels grid preview",
   },
   {
@@ -45,14 +49,19 @@ const showcaseCards = [
     description:
       "Tap the shutter. Snapense reads the receipt, fills in the details, and saves the expense. Done before you've put your wallet away.",
     imageSrc: "/cards/right-iphone.png",
+    darkImageSrc: "/cards/right-iphone-dark.png",
     imageAlt: "Snapense app preview on iPhone frame",
   },
 ];
 
 const Cards = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+
     gsap.registerPlugin(ScrollTrigger);
 
     if (!sectionRef.current) return;
@@ -118,11 +127,11 @@ const Cards = () => {
             >
               <div className="overflow-hidden rounded-xl">
                 <Image
-                  src={card.imageSrc}
+                  src={mounted && resolvedTheme === "dark" && (card as any).darkImageSrc ? (card as any).darkImageSrc : card.imageSrc}
                   alt={card.imageAlt}
                   width={1200}
                   height={900}
-                  className={`h-auto w-full object-cover ${index === 1 ? "scale-[1.05] -translate-x-[3%]" : ""}`}
+                  className={`h-auto w-full object-cover transition-opacity duration-300 ${index === 1 ? "scale-[1.05] -translate-x-[3%]" : ""}`}
                   data-card-media
                 />
               </div>
@@ -142,7 +151,7 @@ const Cards = () => {
           ))}
         </div>
       </div>
-      <div className="mx-auto mt-6 grid max-w-screen-2xl gap-6 lg:grid-cols-2">
+      <div className="mx-auto mt-6 grid max-w-screen-2xl gap-6 lg:grid-cols-2" suppressHydrationWarning>
         {showcaseCards.map((card) => (
           <motion.article
             key={card.title}
@@ -156,13 +165,13 @@ const Cards = () => {
               {card.description}
             </p>
 
-            <div className="mt-5    ">
+            <div className="mt-5" suppressHydrationWarning>
               <Image
-                src={card.imageSrc}
+                src={mounted && resolvedTheme === "dark" && (card as any).darkImageSrc ? (card as any).darkImageSrc : card.imageSrc}
                 alt={card.imageAlt}
                 width={1600}
                 height={1000}
-                className="h-auto w-full object-contain"
+                className="h-auto w-full object-contain transition-opacity duration-300"
                 data-card-media
               />
             </div>

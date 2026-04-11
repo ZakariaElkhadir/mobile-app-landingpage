@@ -18,22 +18,22 @@ export default function FaqItem({
 
   return (
     <div
-      className={`border rounded-2xl overflow-hidden cursor-pointer transition-colors duration-200 bg-white ${
+      className={`border rounded-2xl overflow-hidden cursor-pointer transition-colors duration-200 bg-bg-white ${
         isOpen
-          ? "border-gray-100 shadow-sm"
-          : "border-gray-100 hover:border-gray-200"
+          ? "border-selection-gray shadow-sm"
+          : "border-selection-gray hover:border-text-unselected"
       }`}
       onClick={() => setIsOpen(!isOpen)}
     >
       <div className="p-6 flex items-center justify-between gap-4 select-none">
         <h3
-          className={`text-[15px] sm:text-base transition-colors ${isOpen ? "text-[#208AFF]" : "text-gray-600"}`}
+          className={`text-[15px] sm:text-base transition-colors ${isOpen ? "text-brand-blue" : "text-text-vibrant"}`}
         >
           {question}
         </h3>
 
         {isOpen ? (
-          <div className="w-5 h-5 rounded-full bg-[#208AFF] text-white flex items-center justify-center shrink-0">
+          <div className="w-5 h-5 rounded-full bg-brand-blue text-white flex items-center justify-center shrink-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -50,7 +50,7 @@ export default function FaqItem({
             </svg>
           </div>
         ) : (
-          <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-800">
+          <div className="w-5 h-5 flex items-center justify-center shrink-0 text-text-vibrant">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -77,7 +77,7 @@ export default function FaqItem({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 pb-6 text-[#949494] text-[13px] sm:text-sm leading-relaxed">
+            <div className="px-6 pb-6 text-text-muted text-[13px] sm:text-sm leading-relaxed">
               {answer}
             </div>
           </motion.div>
