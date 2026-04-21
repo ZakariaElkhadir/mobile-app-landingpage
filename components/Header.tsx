@@ -74,23 +74,24 @@ const Header = () => {
 
   return (
     <motion.header
-      className="2xl:px-31 flex items-center justify-between bg-bg-white px-8 py-3 lg:px-16 fixed top-0 w-full z-50 transition-colors"
+      className="2xl:px-31 flex items-center justify-between lg:justify-center bg-bg-white px-8 py-3 lg:px-16 fixed top-0 w-full z-50 transition-colors"
       initial="hidden"
       animate="show"
       variants={containerVariants}
     >
-      <nav className="flex flex-1 items-center">
-        <motion.div className="logo" variants={itemVariants}>
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={36}
-            height={36}
-            loading="eager"
-          />
-        </motion.div>
+      <motion.div className="logo lg:absolute lg:left-8 2xl:lg:left-16" variants={itemVariants}>
+        <Image
+          src="/logo.png"
+          alt="Logo"
+          width={36}
+          height={36}
+          loading="eager"
+        />
+      </motion.div>
+      
+      <nav className="hidden lg:flex">
         <motion.ul
-          className="hidden lg:flex flex-1 items-center justify-center gap-8 text-sm"
+          className="flex items-center justify-center gap-8 text-sm"
           variants={containerVariants}
         >
           {navItems.map((item) => {
@@ -127,7 +128,7 @@ const Header = () => {
         </motion.ul>
       </nav>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 lg:absolute lg:right-8 2xl:lg:right-16">
         <ThemeToggle />
         <motion.button
           className="hidden sm:block rounded-[43px] bg-button px-5 py-2.5 text-sm text-button-text"
